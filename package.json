@@ -2,7 +2,7 @@
   "name": "query-params",
   "version": "0.0.0",
   "description": "Very simple CommonJS-module to encode/decode query parameters",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "karma start"
   },
