@@ -12,6 +12,10 @@ function encode (o, sep) {
 
 var REXP_SPLIT = /&amp;|&|;/gmi;
 function decode (str, sep) {
+    if(!str && window) {
+        str = window.location.search.substring(1);
+    }
+
     sep = sep||REXP_SPLIT;
     var result = {};
     var expr = str.split(sep);
