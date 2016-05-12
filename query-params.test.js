@@ -10,6 +10,9 @@ describe('query-params', function() {
         expect(params.encode({a: 'æ'})).toEqual('a=%C3%A6');
         expect(params.encode({a: 1})).toEqual('a=1');
         expect(params.encode({a: URL})).toEqual('a=' + encodeURIComponent(URL));
+        expect(params.encode({a: 'a', b: function () { return 1; }})).toEqual('a=a');
+        expect(params.encode({a: 'a', b: null})).toEqual('a=a');
+        expect(params.encode({a: 'a', b: { c: 'c' }})).toEqual('a=a');
     });
 
     it('should encode with custom separator', function () {
