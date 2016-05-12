@@ -1,13 +1,11 @@
 function encode (o, sep) {
-    var list = [];
-    var key;
-    for (key in o) {
-        if (o[key] != null && typeof o[key] != 'object' &&
-                typeof o[key] != 'function') {
-            list.push(encodeURIComponent(key) + '=' + encodeURIComponent(o[key]));
-        }
-    }
-    return list.join(sep || '&');
+    return (
+        Object.keys(o).filter(function (key) {
+            return o[key] != null && typeof o[key] != 'object' && typeof o[key] != 'function'
+        })
+        .map(function (key) { return encodeURIComponent(key) + '=' + encodeURIComponent(o[key]); })
+        .join(sep || '&')
+    )
 }
 
 var REXP_SPLIT = /&amp;|&|;/gmi;
